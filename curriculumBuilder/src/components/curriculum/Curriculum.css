@@ -1,0 +1,12 @@
+.curriculum {
+  width: 210mm;
+  height: 297mm;
+  background-color: white;
+  margin: 0 auto; /* Centraliza na tela */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidade */
+  
+  /* Garante que o conteúdo não vaze */
+  overflow: hidden; 
+  box-sizing: border-box; 
+  padding: 20mm; /* Margem interna padrão de currículos */
+}
