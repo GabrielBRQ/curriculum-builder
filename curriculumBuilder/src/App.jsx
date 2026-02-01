@@ -78,7 +78,6 @@ function App() {
   const addExperience = () => {
     const lastExp = experienceList[experienceList.length - 1];
 
-    // Validação: só adiciona se o último cargo não estiver vazio
     if (!lastExp || lastExp.position.trim() !== "") {
       const newExperience = {
         id: Date.now(),
@@ -98,7 +97,6 @@ function App() {
   const addEducation = () => {
     const lastExp = educationList[educationList.length - 1];
 
-    // Validação: só adiciona se o último cargo não estiver vazio
     if (!lastExp || lastExp.position.trim() !== "") {
       const newEducation = {
         id: Date.now(),
@@ -117,7 +115,6 @@ function App() {
   const addSkill = () => {
     const lastSkill = skillsList[skillsList.length - 1];
 
-    // Agora validando o campo correto: .skill
     if (!lastSkill || lastSkill.skill.trim() !== "") {
       const newSkill = {
         id: Date.now(),
@@ -187,11 +184,9 @@ function App() {
   const downloadPDF = () => {
     const element = curriculumRef.current;
 
-    // 1. Forçamos o estilo de "folha A4" via código antes de gerar o PDF
-    // Isso garante que mesmo no celular, o motor do PDF veja o tamanho correto
     const originalStyle = element.style.width;
     element.style.width = "210mm";
-    element.style.minHeight = "297mm";
+    element.style.minHeight = "292mm";
 
     const opt = {
       margin: 0,
@@ -200,13 +195,13 @@ function App() {
       html2canvas: {
         scale: 2,
         useCORS: true,
-        width: 793, // Equivalente a 210mm em pixels (96 DPI)
-        windowWidth: 793 // Força o html2canvas a ignorar a largura da tela do celular
+        scrollY: 0,
+        windowWidth: 1000
       },
-      jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+      jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+      pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
     };
 
-    // 2. Geramos o PDF e depois limpamos os estilos temporários
     html2pdf()
       .set(opt)
       .from(element)
@@ -214,7 +209,6 @@ function App() {
       .get('pdf')
       .save()
       .then(() => {
-        // Restaura o estilo original para que o usuário continue vendo o layout mobile no celular
         element.style.width = originalStyle;
         element.style.minHeight = "";
       });

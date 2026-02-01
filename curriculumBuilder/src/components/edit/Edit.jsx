@@ -127,7 +127,7 @@ export default function Edit({
                             onChange={(e) => onPersonChange("profile", e.target.value)}
                             placeholder="Conte um pouco sobre você"
                             className="profile-textarea"
-                            rows="5" // Define a altura inicial em linhas
+                            rows="5"
                         />
                     </div>
                 )}
