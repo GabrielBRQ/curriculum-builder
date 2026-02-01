@@ -1,12 +1,155 @@
 .curriculum {
   width: 210mm;
-  height: 297mm;
+  height: 296mm;
   background-color: white;
-  margin: 0 auto; /* Centraliza na tela */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidade */
-  
+  margin: 0 auto;
+  overflow: hidden;
+
+  /* Centraliza na tela */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  /* Sombra para dar profundidade */
+
   /* Garante que o conteúdo não vaze */
-  overflow: hidden; 
-  box-sizing: border-box; 
-  padding: 20mm; /* Margem interna padrão de currículos */
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 20mm;
+}
+
+.curriculum * {
+  break-inside: avoid;
+}
+
+.curriculum-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.curriculum-header-info {
+  flex: 0 0 70%;
+  width: 70%;
+}
+
+.curriculum-header-info h1 {
+  font-size: 2.4rem;
+}
+
+.curriculum-profile p {
+  word-break: break-word;
+  /* Quebra palavras muito longas se necessário */
+  overflow-wrap: break-word;
+  /* Garante que o texto fique dentro do container */
+  white-space: pre-wrap;
+  /* Essencial: preserva as quebras de linha (Enter) que o usuário deu no formulário */
+  line-height: 1.5;
+  /* Melhora a leitura do perfil */
+  text-align: justify;
+  /* Opcional: deixa as bordas do texto alinhadas, comum em CVs */
+}
+
+.curriculum-contact {
+  flex: 0 0 30%;
+  width: 30%;
+}
+
+.curriculum-header-info,
+.curriculum-contact,
+.curriculum-profile,
+.curriculum-experience,
+.curriculum-education,
+.curriculum-skills {
+  text-align: left;
+}
+
+.curriculum-profile,
+.curriculum-experience,
+.curriculum-education {
+  margin-top: 25px;
+}
+
+.curriculum-experience h2 {
+  margin-bottom: 8px;
+}
+
+
+/* Media Query para celulares */
+@media (max-width: 768px) {
+  .curriculum {
+    width: 95%;
+    /* Ocupa quase toda a largura da tela */
+    height: auto;
+    /* Deixa a altura livre para crescer conforme o conteúdo */
+    padding: 10mm;
+    /* Reduz a margem interna para ganhar espaço */
+    min-height: unset;
+    /* Remove a altura mínima de A4 no mobile */
+  }
+
+  .curriculum-header {
+    flex-direction: column;
+    /* Empilha Nome e Contatos verticalmente */
+    gap: 15px;
+  }
+
+  .curriculum-header-info,
+  .curriculum-contact {
+    width: 100%;
+    /* Faz ambos ocuparem a largura total */
+    flex: 0 0 100%;
+  }
+
+  .curriculum-header-info h1 {
+    font-size: 1.8rem;
+    /* Diminui o título para não quebrar feio */
+  }
+
+  .header-inputs,
+  .experience-inputs-container,
+  .experience-info,
+  .date-group,
+  .header-inputs-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .experience-inputs-container {
+    display: flex;
+    flex-direction: column;
+    /* Empilha os blocos verticalmente */
+    align-items: center;
+    /* Centraliza os blocos horizontalmente */
+    gap: 20px;
+    /* Espaço entre cada bloco de experiência */
+    width: 100%;
+  }
+
+  .experience-info {
+    display: flex;
+    flex-direction: column;
+    /* Empilha Label + Input */
+    align-items: center;
+    /* Centraliza o texto e o input */
+    width: 100%;
+    /* Faz o bloco usar a largura disponível */
+    gap: 10px;
+  }
+
+  /* Faz com que os inputs fiquem com um tamanho amigável no celular */
+  .experience-info input,
+  .experience-info textarea {
+    width: 90%;
+    /* Largura confortável com margens nas laterais */
+    max-width: 400px;
+    /* Evita que fique gigante em tablets */
+  }
+
+  /* Ajuste para que o label fique centralizado acima do input */
+  .experience-info label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
 }

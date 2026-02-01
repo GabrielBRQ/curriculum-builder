@@ -1,0 +1,79 @@
+.option-item label {
+    display: flex;
+    flex-direction: column;
+    /* Coloca o texto acima do input */
+    align-items: center;
+    /* Centraliza os itens */
+    gap: 8px;
+    /* Espaço entre o texto e o seletor */
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.color-picker {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    width: 45px;
+    height: 45px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+
+    /* O SEGREDO: Força o arredondamento no container e no elemento principal */
+    border-radius: 50%;
+    display: inline-block;
+    overflow: hidden;
+}
+
+/* Chrome, Safari, Edge e Opera */
+.color-picker::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+
+.color-picker::-webkit-color-swatch {
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    box-sizing: border-box;
+    /* Garante que a borda não achate o círculo */
+}
+
+/* Firefox */
+.color-picker::-moz-color-swatch {
+    border: 2px solid #ccc;
+    border-radius: 50%;
+}
+
+.options {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    align-items: flex-end;
+    /* Alinha a base do seletor com a base do botão */
+    padding: 20px;
+}
+
+.option-item p {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.download-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.download-btn:hover {
+    background-color: #218838;
+}

@@ -1,32 +1,186 @@
 .buttons-container {
     display: flex;
     justify-content: space-around;
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
     gap: 10px;
     padding: 10px 0 10px 0;
 }
 
-.header-inputs-container {
+.header-inputs-container,
+.experience-inputs-container {
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
 
+.label-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;           
+    margin-bottom: 10px;
+    font-size: large;
+    font-weight: bold;
+}
+
+
+.experience-inputs-container {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center; 
+    gap: 30px; 
+    align-items: center;
+    margin-top: 25px;
+}
+
+
+
 .input-group {
     display: flex;
     gap: 15px;
+    margin:7px;
+}
+.header-contact .delete-contact-btn,
+.skills-container .delete-contact-btn {
+    background-color: red;
+    height: 25px;
+    min-width: 25px;
+    padding: 0;
+    margin-top: 0;
 }
 
-.active-form{
+.active-form {
     padding-bottom: 30px;
 }
 
-.header-contact button{
+.header-contact .add-btn {
+    background-color: green;
+    font-weight: bold;
+    min-width: 25px;
+}
+
+.header-inputs .add-button {
+    background-color: green;
+    font-weight: bold;
+    min-width: 25px;
     margin-top: 15px;
 }
 
-.header-info{
+.skill-input-group{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin: 7px;
+}
+
+.header-contact button {
+    margin-top: 15px;
+}
+
+.header-info {
     display: flex;
     flex-direction: column;
     align-items: end;
+    gap: 5px;
+}
+
+input[type="checkbox"] {
+    accent-color: #007bff; /* Um azul padrão, você pode usar o seu hexa preferido */
+    cursor: pointer;
+}
+
+.profile-textarea {
+    width: 50%;
+    min-height: 150px;
+    padding: 12px;
+    border: 1px solid #000000;
+    border-radius: 8px;
+    font-family: inherit;
+    resize: vertical;
+    line-height: 1.5;
+}
+
+.profile-textarea:focus {
+    outline: none;
+    border-color: #646cff;
+    box-shadow: 0 0 5px rgba(100, 108, 255, 0.2);
+}
+
+.date-group {
+    display: flex;
+    gap: 50px;
+    align-items: center;
+}
+
+.date-input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.date-input::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    filter: invert(0.5);
+}
+
+.experience-info {
+    display: flex;
+    align-items: center; 
+    flex-wrap: wrap; 
+}
+
+.experience-info input{
+    padding: 8px; 
+}
+
+
+.experience-info label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-right: 15px;
+}
+
+.experience-button {
+    margin: 25px;
+    background-color: green;
+    font-weight: bold;
+    min-width: 25px;
+}
+
+.experience-description,
+.experience-description label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.experience-description label {
+    width: 50%;
+}
+
+.description-textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: inherit;
+    resize: vertical;
+    margin-top: 5px;
+    box-sizing: border-box;
+}
+
+.experience-description label {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.delete-education-btn {
+    background-color: rgb(173, 46, 46);
 }
