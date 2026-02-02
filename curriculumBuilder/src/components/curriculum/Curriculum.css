@@ -77,6 +77,10 @@
   margin-bottom: 8px;
 }
 
+.curriculum-skills {
+  margin-top: 25px;
+}
+
 
 /* Media Query para celulares */
 @media (max-width: 768px) {
