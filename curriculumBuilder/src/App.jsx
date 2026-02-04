@@ -14,7 +14,7 @@ function App() {
     { id: Date.now(), position: "", company: "", startDate: "", endDate: "", description: "" }
   ]);
   const [educationList, setEducationList] = useState([
-    { id: Date.now(), position: "", company: "", startDate: "", endDate: "" }
+    { id: Date.now(), position: "", company: "", startDate: "", endDate: "", complete: false }
   ]);
   const [skillsList, setSkillsList] = useState([
     { id: Date.now(), skill: "" }
@@ -103,7 +103,8 @@ function App() {
         position: "",
         company: "",
         startDate: "",
-        endDate: ""
+        endDate: "",
+        complete: false
       };
       setEducationList([...educationList, newEducation]);
     } else {

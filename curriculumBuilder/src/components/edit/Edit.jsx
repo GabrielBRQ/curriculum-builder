@@ -122,7 +122,7 @@ export default function Edit({
                     <div className="header-inputs">
                         <h3>Edite as informações de perfil</h3>
                         <textarea
-                            id = "profileTextArea"
+                            id="profileTextArea"
                             value={person.profile}
                             onChange={(e) => onPersonChange("profile", e.target.value)}
                             placeholder="Conte um pouco sobre você"
@@ -247,10 +247,22 @@ export default function Edit({
                                     </label>
                                 </div>
 
+                                <div className="status-group" style={{ marginTop: '10px' }}>
+                                    <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}>
+                                        <input
+                                            type="checkbox"
+                                            checked={exp.complete || false}
+                                            onChange={(e) => onEducationChange(exp.id, "complete", e.target.checked)}
+                                        />
+                                        Concluído?
+                                    </label>
+                                </div>
+
                                 <button onClick={() => deleteEducation(exp.id)} className="delete-education-btn">
                                     Remover Educação
                                 </button>
                             </div>
+
                         ))}
 
                         <button className="experience-button" onClick={addEducation}>Adicionar</button>

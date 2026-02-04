@@ -129,11 +129,19 @@ export default function Curriculum({
                                         {edu.position}
                                     </h3>
 
-                                    <h3 style={{ fontSize: "0.9rem", color: "#666" }}>
+                                    <h3 style={{ fontSize: "0.9rem", color: "#666", fontWeight: "normal" }}>
                                         {edu.company}
                                         {(edu.startDate || edu.endDate) && (
                                             ` (${formatDate(edu.startDate)} - ${edu.endDate === "Atual" ? "Atual" : formatDate(edu.endDate)})`
                                         )}
+                                        {/* Lógica do status de conclusão */}
+                                        <span style={{
+                                            marginLeft: "8px",
+                                            fontStyle: "italic",
+                                            color: edu.complete ? "#2e7d32" : "#ed6c02" // Verde para concluído, laranja para andamento
+                                        }}>
+                                            • {edu.complete ? "Concluído" : "Em andamento"}
+                                        </span>
                                     </h3>
                                 </div>
                             );
