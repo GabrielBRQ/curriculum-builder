@@ -4,6 +4,7 @@ export default function Curriculum({
     contactList,
     person,
     experienceList,
+    projectList,
     educationList,
     skillsList,
     themeColor
@@ -66,7 +67,7 @@ export default function Curriculum({
             <div className="curriculum-experience">
                 {experienceList.some(exp => exp.position.trim() !== "" || exp.company.trim() !== "") && (
                     <>
-                        <h2 style={{ color: themeColor }}>EXPERIÊNCIA PROFISSIONAL</h2>
+                        <h2 style={{ color: themeColor, fontSize: "23px"}}>EXPERIÊNCIA PROFISSIONAL</h2>
                         {experienceList.map((exp) => {
                             if (!exp.position && !exp.company) return null;
 
@@ -104,10 +105,77 @@ export default function Curriculum({
                 )}
             </div>
 
+            <div className="curriculum-experience">
+                {projectList.some(proj => proj.name.trim() !== "") && (
+                    <>
+                        <h2 style={{ color: themeColor, marginTop: "20px", textTransform: "uppercase", fontSize: "23px" }}>PROJETOS PESSOAIS</h2>
+
+                        {projectList.map((proj) => {
+                            if (!proj.name) return null;
+
+                            const getSafeLink = (url) => {
+                                if (!url) return "#";
+                                return url.startsWith("http") ? url : `https://${url}`;
+                            };
+
+                            return (
+                                <div key={proj.id} style={{ marginBottom: "15px", borderLeft: "2px solid #ccc", paddingLeft: "10px" }}>
+
+                                    {/* Título do Projeto e Link */}
+                                    <h3 style={{
+                                        fontSize: "clamp(12px, 2vw, 18px)",
+                                        margin: "0 0 5px 0"
+                                    }}>
+                                        {proj.name}
+                                        {proj.link && (
+                                            <span style={{ fontSize: "0.8em", marginLeft: "10px" }}>
+                                                <a
+                                                    href={getSafeLink(proj.link)}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    style={{ color: themeColor, textDecoration: "none" }}
+                                                >
+                                                    (Link do projeto)
+                                                </a>
+                                            </span>
+                                        )}
+                                    </h3>
+
+                                    {/* Tecnologias Utilizadas (destaque visual) */}
+                                    {proj.technologies && (
+                                        <p style={{
+                                            fontSize: "0.9rem",
+                                            color: "#555",
+                                            fontStyle: "italic",
+                                            margin: "0 0 8px 0",
+                                            fontWeight: "500"
+                                        }}>
+                                            Tecnologias: {proj.technologies}
+                                        </p>
+                                    )}
+
+                                    {/* Descrição */}
+                                    {proj.description && (
+                                        <p style={{
+                                            whiteSpace: "pre-wrap",
+                                            margin: "0",
+                                            fontSize: "14px",
+                                            lineHeight: "1.5"
+                                        }}>
+                                            {proj.description}
+                                        </p>
+                                    )}
+                                </div>
+                            );
+                        })}
+                    </>
+                )}
+            </div>
+
             <div className="curriculum-education">
                 {educationList.some(edu => edu.position.trim() !== "" || edu.company.trim() !== "") && (
                     <>
-                        <h2 style={{ color: themeColor }}>FORMAÇÃO ACADÊMICA</h2>
+                        <h2 style={{ color: themeColor, fontSize: "23px"}}>FORMAÇÃO ACADÊMICA</h2>
                         {educationList.map((edu) => {
                             if (!edu.position && !edu.company) return null;
 
@@ -119,7 +187,7 @@ export default function Curriculum({
                             };
 
                             return (
-                                <div key={edu.id} style={{ marginBottom: "10px" }}>
+                                <div key={edu.id} >
                                     <h3 style={{
                                         whiteSpace: "nowrap",
                                         overflow: "hidden",
@@ -152,7 +220,7 @@ export default function Curriculum({
 
             {skillsList.some(s => s.skill && s.skill.trim() !== "") && (
                 <div className="curriculum-skills">
-                    <h3 style={{ color: themeColor }}>Habilidades</h3>
+                    <h3 style={{ color: themeColor }}>HABILIDADES</h3>
                     <ul style={{
                         listStyleType: "disc",
                         paddingLeft: "20px",

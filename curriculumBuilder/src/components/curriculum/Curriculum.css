@@ -9,7 +9,7 @@
 
   overflow: hidden;
   box-sizing: border-box;
-  padding: 20mm;
+  padding: 18mm;
 }
 
 .curriculum-experience p {
@@ -70,7 +70,7 @@
 .curriculum-profile,
 .curriculum-experience,
 .curriculum-education {
-  margin-top: 25px;
+  margin-top: 15px;
 }
 
 .curriculum-experience h2 {
@@ -78,7 +78,7 @@
 }
 
 .curriculum-skills {
-  margin-top: 25px;
+  margin-top: 15px;
 }
 
 

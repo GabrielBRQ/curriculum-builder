@@ -21,7 +21,11 @@ export default function Edit({
     addSkill,
     addExperience,
     handleLinkToggle,
-    onUrlChange
+    onUrlChange,
+    projectList,
+    deleteProject,
+    addProject,
+    onProjectChange
 }) {
     const [activebutton, setActiveButton] = useState("");
 
@@ -37,6 +41,7 @@ export default function Edit({
                 <button onClick={handleActiveButton}>Cabeçalho</button>
                 <button onClick={handleActiveButton}>Perfil</button>
                 <button onClick={handleActiveButton}>Experiências</button>
+                <button onClick={handleActiveButton}>Projetos</button>
                 <button onClick={handleActiveButton}>Educação</button>
                 <button onClick={handleActiveButton}>Habilidades</button>
             </div>
@@ -101,7 +106,7 @@ export default function Edit({
                                                 type="text"
                                                 className="url-input"
                                                 value={contact.linkUrl}
-                                                onChange={(e) => onUrlChange(contact.id, e.target.value)} // Certifique-se de criar essa função
+                                                onChange={(e) => onUrlChange(contact.id, e.target.value)}
                                                 placeholder="Cole a URL aqui (Ex: linkedin.com/in/usuario)"
                                                 style={{
                                                     fontSize: '0.85rem',
@@ -186,7 +191,7 @@ export default function Edit({
                                     <label>
                                         Descrição das atividades
                                         <textarea
-                                            id={Date.now() + "xp"}
+                                            id={exp.id + "xp"}
                                             value={exp.description}
                                             onChange={(e) => onExperienceChange(exp.id, "description", e.target.value)}
                                             placeholder="Descreva suas responsabilidades e conquistas..."
@@ -199,6 +204,63 @@ export default function Edit({
                         ))}
 
                         <button className="experience-button" onClick={addExperience}>Adicionar</button>
+                    </div>
+                )}
+                {activebutton === "Projetos" && (
+                    <div className="header-inputs">
+                        <h3>Edite as informações de projetos</h3>
+
+                        {projectList.map((exp) => (
+                            <>
+                                <div key={exp.id} className="experience-inputs-container" style={{ marginBottom: '20px', borderBottom: '1px solid #eee', paddingBottom: '10px' }}>
+                                    <div className="experience-info">
+                                        <label>
+                                            Nome do projeto
+                                            <input
+                                                value={exp.name}
+                                                onChange={(e) => onProjectChange(exp.id, "name", e.target.value)}
+                                                placeholder="Digite o nome"
+                                            />
+                                        </label>
+                                        <label>
+                                            Tecnologias utilizadas
+                                            <input
+                                                value={exp.technologies}
+                                                onChange={(e) => onProjectChange(exp.id, "technologies", e.target.value)}
+                                                placeholder="Digite as tecnologias"
+                                            />
+                                        </label>
+                                        <label>
+                                            Link do projeto/repositório
+                                            <input
+                                                value={exp.link}
+                                                onChange={(e) => onProjectChange(exp.id, "link", e.target.value)}
+                                                placeholder="Digite o link"
+                                            />
+                                        </label>
+
+                                        <button onClick={() => deleteProject(exp.id)} className="delete-education-btn">
+                                            Remover Projeto
+                                        </button>
+                                    </div>
+                                </div>
+                                <div className="experience-description">
+                                    <label>
+                                        Descrição das atividades
+                                        <textarea
+                                            id={exp.id + "xp"}
+                                            value={exp.description}
+                                            onChange={(e) => onProjectChange(exp.id, "description", e.target.value)}
+                                            placeholder="Descreva o seu projeto..."
+                                            className="description-textarea"
+                                            rows="4"
+                                        />
+                                    </label>
+                                </div>
+                            </>
+                        ))}
+
+                        <button className="experience-button" onClick={addProject}>Adicionar</button>
                     </div>
                 )}
                 {activebutton === "Educação" && (
@@ -292,7 +354,6 @@ export default function Edit({
                             ))}
                         </div>
 
-                        {/* Chamando a função addSkill no clique */}
                         <button className="add-button" onClick={addSkill}>Adicionar</button>
                     </div>
                 )}

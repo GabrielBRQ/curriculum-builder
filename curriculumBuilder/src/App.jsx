@@ -11,13 +11,16 @@ function App() {
   const [contactList, setContactList] = useState([]);
   const [person, setPerson] = useState({ name: "", title: "", profile: "" });
   const [experienceList, setExperienceList] = useState([
-    { id: Date.now(), position: "", company: "", startDate: "", endDate: "", description: "" }
+    // { id: Date.now(), position: "", company: "", startDate: "", endDate: "", description: "" }
+  ]);
+  const [projectList, setProjectList] = useState([
+     { id: Date.now(), name: "", technologies: "", link: "", description: "" }
   ]);
   const [educationList, setEducationList] = useState([
-    { id: Date.now(), position: "", company: "", startDate: "", endDate: "", complete: false }
+    // { id: Date.now(), position: "", company: "", startDate: "", endDate: "", complete: false }
   ]);
   const [skillsList, setSkillsList] = useState([
-    { id: Date.now(), skill: "" }
+    // { id: Date.now(), skill: "" }
   ]);
 
   // Referência para o pdf do currículo
@@ -56,6 +59,10 @@ function App() {
     setExperienceList(experienceList.filter(exp => exp.id !== id));
   };
 
+  const deleteProject = (id) => {
+    setProjectList(projectList.filter(pjct => pjct.id !== id));
+  };
+
   const deleteEducation = (id) => {
     setEducationList(educationList.filter(edu => edu.id !== id));
   };
@@ -90,6 +97,24 @@ function App() {
       setExperienceList([...experienceList, newExperience]);
     } else {
       alert("Preencha o cargo da experiência anterior antes de adicionar uma nova.");
+    }
+  };
+
+  //Função para adicionar um novo objeto de projeto
+  const addProject = () => {
+    const lastExp = projectList[projectList.length - 1];
+
+    if (!lastExp || lastExp.name.trim() !== "") {
+      const newExperience = {
+        id: Date.now(),
+        name: "",
+        technologies: "",
+        link: "",
+        description: ""
+      };
+      setProjectList([...projectList, newExperience]);
+    } else {
+      alert("Preencha o projeto anterior antes de adicionar um novo.");
     }
   };
 
@@ -130,6 +155,16 @@ function App() {
   //Função para mudar um valor dinamico da experiencia na lista
   const handleExperienceChange = (id, field, value) => {
     setExperienceList(experienceList.map(exp => {
+      if (exp.id === id) {
+        return { ...exp, [field]: value };
+      }
+      return exp;
+    }));
+  };
+
+  //Função para mudar um valor dinamico da experiencia na lista
+  const handleProjectChange = (id, field, value) => {
+    setProjectList(projectList.map(exp => {
       if (exp.id === id) {
         return { ...exp, [field]: value };
       }
@@ -239,12 +274,17 @@ function App() {
         addExperience={addExperience}
         handleLinkToggle={handleLinkToggle}
         onUrlChange={onUrlChange}
+        projectList={projectList}
+        deleteProject={deleteProject}
+        addProject={addProject}
+        onProjectChange={handleProjectChange}
       />
       <div ref={curriculumRef}>
         <Curriculum
           contactList={contactList}
           person={person}
           experienceList={experienceList}
+          projectList={projectList}
           educationList={educationList}
           skillsList={skillsList}
           themeColor={themeColor}
