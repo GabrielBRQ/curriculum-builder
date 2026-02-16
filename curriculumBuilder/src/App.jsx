@@ -14,7 +14,7 @@ function App() {
     // { id: Date.now(), position: "", company: "", startDate: "", endDate: "", description: "" }
   ]);
   const [projectList, setProjectList] = useState([
-     { id: Date.now(), name: "", technologies: "", link: "", description: "" }
+  //   { id: Date.now(), name: "", technologies: "", link: "", description: "" }
   ]);
   const [educationList, setEducationList] = useState([
     // { id: Date.now(), position: "", company: "", startDate: "", endDate: "", complete: false }
